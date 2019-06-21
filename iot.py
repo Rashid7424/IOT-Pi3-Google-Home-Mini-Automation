@@ -11,6 +11,9 @@ app = Flask(__name__)
 
 GPIO.setwarnings(False) 
 GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
+GPIO.setup(11, GPIO.OUT)   ## Setup GPIO Pin to OUTPUT
+GPIO.setup(13, GPIO.OUT)   ## Setup GPIO Pin to OUTPUT
+GPIO.setup(15, GPIO.OUT)   ## Setup GPIO Pin to OUTPUT
 GPIO.setup(16, GPIO.OUT)   ## Setup GPIO Pin to OUTPUT
 GPIO.setup(18, GPIO.OUT)   ## Setup GPIO Pin to OUTPUT
 
@@ -29,9 +32,16 @@ def processRequest(req):
     state = json.loads(req['state'])
     #print(state)
     if device=='demo light':
+        GPIO.output(11, state) ## State is true/false
+    elif device=='light 1':
+        GPIO.output(13, state) ## State is true/false
+    elif device=='light 2':
         GPIO.output(16, state) ## State is true/false
+    elif device=='light 3':
+        GPIO.output(18, state) ## State is true/false
     elif device=='bedroom fan':
         GPIO.output(18, state) ## State is true/false
+        
         
     return {
     "speech": "it is done",
