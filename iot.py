@@ -36,9 +36,9 @@ def processRequest(req):
     elif device=='light 1':
         GPIO.output(13, state) ## State is true/false
     elif device=='light 2':
-        GPIO.output(16, state) ## State is true/false
+        GPIO.output(15, state) ## State is true/false
     elif device=='light 3':
-        GPIO.output(18, state) ## State is true/false
+        GPIO.output(16, state) ## State is true/false
     elif device=='bedroom fan':
         GPIO.output(18, state) ## State is true/false
         
